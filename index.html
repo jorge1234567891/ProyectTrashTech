@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TrashTech</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 24px;
+    }
+
+    button {
+      background-color: #000000;
+      color: #ffffff;
+      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    .distance {
+      text-align: center;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>TrashTech</h1>
+
+  <button onclick="toggleLED()">Encendido/Apagado</button>
+
+  <div class="distance">
+    <p>Distancia: <span id="distance"></span> cm</p>
+  </div>
+
+  <script>
+    function toggleLED() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "/toggleLED", true);
+      xhr.send();
+    }
+
+    setInterval(function() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "/distance", true);
+      xhr.onload = function() {
+        if (xhr.status == 200) {
+          var distance = xhr.responseText;
+          document.getElementById("distance").innerHTML = distance;
+        }
+      };
+      xhr.send();
+    }, 1000);
+  </script>
+
+
+
+
+
+<script>
+ 
+  function toggleLED() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/toggleLED", true);
+    xhr.send();
+  }
+
+  
+  function getDistance() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/distance", true);
+    xhr.onload = function() {
+      if (xhr.status == 200) {
+        var distance = xhr.responseText;
+        document.getElementById("distance").innerHTML = distance;
+      }
+    };
+    xhr.send();
+  }
+
+  setInterval(getDistance, 1000);
+</script>
+
+
+
+</body>
+</html>
+
