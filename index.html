@@ -37,30 +37,6 @@
     <p>Distancia: <span id="distance"></span> cm</p>
   </div>
 
-  <script>
-    function toggleLED() {
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "/toggleLED", true);
-      xhr.send();
-    }
-
-    setInterval(function() {
-      var xhr = new XMLHttpRequest();
-      xhr.open("GET", "/distance", true);
-      xhr.onload = function() {
-        if (xhr.status == 200) {
-          var distance = xhr.responseText;
-          document.getElementById("distance").innerHTML = distance;
-        }
-      };
-      xhr.send();
-    }, 1000);
-  </script>
-
-
-
-
-
 <script>
  
   function toggleLED() {
