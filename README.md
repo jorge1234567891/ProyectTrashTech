@@ -1,1 +1,3 @@
-# ProyectTrashTech
+#ProyectTrashTech
+#UMG
+#ArquitecturaII
